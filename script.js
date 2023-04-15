@@ -1,3 +1,10 @@
+// const client = contentful.createClient({
+//   // This is the space ID. A space is like a project folder in Contentful terms
+//   space: "ShoppingCart",
+//   // This is the access token for this space. Normally you get both ID and the token in the Contentful web app
+//   accessToken: "4jwRiFVP8Nb6MChjfLHjRHVyyl4hEgfanwrnX-IBbSY",
+// });
+
 const productsContainer = document.querySelector(".products-container");
 const blocksCntainer = document.querySelector(".blocks-container");
 const cartContainer = document.querySelector(".cart-container");
@@ -13,12 +20,35 @@ class Products {
       const res = await fetch("./data.json");
       const data = await res.json();
       return data.items;
+
+      console.log(contentful);
     } catch {
       alert("can't load data ");
     }
   }
-}
+  //   const spaceId = "odczhpfy2peu";
+  //   const accessToken = "kI6Mo3J7BKZVYZtkuZmDmikAg_2PB7CIyYIqZSe1NEE";
 
+  //   fetch(
+  //     `https://cdn.contentful.com/spaces/${spaceId}/entries?access_token=${accessToken}`
+  //   )
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log(data.items);
+  //       let products = data.items;
+  //       products = products.map((item) => {
+  //         const { name, price } = item.fields;
+  //         const { id } = item.sys;
+  //         // const image = item.fields.image;
+  //         return { name, price, id };
+  //       });
+  //       console.log(products);
+
+  //       return products;
+  //     })
+  //     .catch((error) => console.error(error));
+  // }
+}
 class UI {
   displayItems(data) {
     let result = "";
@@ -26,7 +56,7 @@ class UI {
       console.log(item);
       result += ` <div class="product-container">
         <div class="head-product" >
-         <img src=${item.image} alt="product"/>
+         <img src= "./images/laptop 5.png"alt="product"/>
         </div>
         <div class="footer-product">
           <div class="title">
@@ -53,7 +83,7 @@ class UI {
       result += `<div class="block">
           <div class="img-container">
             <img 
-            src=${item.image}
+            src= "./images/laptop 5.png"
              alt=${item.name} />
           </div>
           <div class="info">
