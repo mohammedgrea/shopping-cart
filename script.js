@@ -1,10 +1,3 @@
-// const client = contentful.createClient({
-//   // This is the space ID. A space is like a project folder in Contentful terms
-//   space: "ShoppingCart",
-//   // This is the access token for this space. Normally you get both ID and the token in the Contentful web app
-//   accessToken: "4jwRiFVP8Nb6MChjfLHjRHVyyl4hEgfanwrnX-IBbSY",
-// });
-
 const productsContainer = document.querySelector(".products-container");
 const blocksCntainer = document.querySelector(".blocks-container");
 const cartContainer = document.querySelector(".cart-container");
@@ -14,49 +7,15 @@ const totalPrice = document.querySelector(".total-price span");
 const counterItems = document.querySelector(".counter-items");
 const clearCart = document.querySelector(".clear-cart");
 
-class Products {
-  async getProducts() {
-    try {
-      const res = await fetch("./data.json");
-      const data = await res.json();
-      return data.items;
-
-      console.log(contentful);
-    } catch {
-      alert("can't load data ");
-    }
-  }
-  //   const spaceId = "odczhpfy2peu";
-  //   const accessToken = "kI6Mo3J7BKZVYZtkuZmDmikAg_2PB7CIyYIqZSe1NEE";
-
-  //   fetch(
-  //     `https://cdn.contentful.com/spaces/${spaceId}/entries?access_token=${accessToken}`
-  //   )
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log(data.items);
-  //       let products = data.items;
-  //       products = products.map((item) => {
-  //         const { name, price } = item.fields;
-  //         const { id } = item.sys;
-  //         // const image = item.fields.image;
-  //         return { name, price, id };
-  //       });
-  //       console.log(products);
-
-  //       return products;
-  //     })
-  //     .catch((error) => console.error(error));
-  // }
-}
 class UI {
   displayItems(data) {
     let result = "";
-    data.forEach((item) => {
+    data?.forEach((item) => {
       console.log(item);
       result += ` <div class="product-container">
         <div class="head-product" >
-         <img src= "./images/laptop 5.png"alt="product"/>
+         <img src=${item.image}
+         alt="product"/>
         </div>
         <div class="footer-product">
           <div class="title">
@@ -79,11 +38,11 @@ class UI {
 
   displayCartItems(data) {
     let result = "";
-    data.map((item) => {
+    data?.map((item) => {
       result += `<div class="block">
           <div class="img-container">
             <img 
-            src= "./images/laptop 5.png"
+            src= ${item.image}
              alt=${item.name} />
           </div>
           <div class="info">
@@ -110,7 +69,7 @@ class UI {
     const addBtns = document.querySelectorAll(".add-to-cart");
     let cart = Storage.getcart();
     addBtns.forEach((btn) => {
-      if (cart.find((ele) => ele.id == btn.id)) {
+      if (cart?.find((ele) => ele.id == btn.id)) {
         btn.classList.replace("add-to-cart", "in-cart");
         btn.textContent = "in Cart";
       } else {
@@ -249,16 +208,9 @@ class Storage {
 
 document.addEventListener("DOMContentLoaded", () => {
   const ui = new UI();
-  const products = new Products();
-  products
-    .getProducts()
-    .then((product) => {
-      ui.displayItems(product);
-      Storage.saveProducts(product);
-    })
-    .then(() => {
-      ui.clearAllItems();
-    })
-    .catch((err) => {});
+  // const products = new Products();
+  ui.displayItems(products);
+  Storage.saveProducts(products);
+  ui.clearAllItems();
   ui.setup();
 });

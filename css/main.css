@@ -20,13 +20,15 @@ html {
 }
 body {
   background-color: var(--mainBgColor);
+  height: 100vh;
+  overflow: hidden;
 }
 .main-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 70px;
-  padding-inline: 120px;
+  padding-inline: 270px;
   background-color: var(--secondaryBgColor);
   color: var(--mainTextColor);
 }
@@ -59,18 +61,19 @@ body {
 .products-container {
   display: flex;
   flex-wrap: wrap;
-
-  gap: 20px;
+  gap: 10px;
   background-color: var(--secondaryBgColor);
-  margin: 50px auto;
-  width: calc(100vw - 240px);
-  padding: 20px;
+  margin: 30px auto;
+  width: calc(100vw - 540px);
+  padding: 30px;
+  border-radius: 16px;
+  /* height: 600px; */
 }
 .product-container {
   background-color: var(--mainBgColor);
   flex: 25%;
-  min-width: 250px;
-  height: 60%;
+  min-width: 150px;
+  max-height: 320px;
   border-radius: 8px;
 }
 .product-container .head-product {
@@ -84,15 +87,15 @@ body {
   width: 100%;
 }
 .product-container .head-product img {
+  border-radius: 8px 8px 0 0;
   height: 100%;
   width: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
 .product-container .footer-product {
   padding: 20px;
 }
 .product-container .footer-product .title {
-  font-size: 18px;
   color: var(--secondaryTextColor);
   font-weight: lighter;
   line-height: 1.5;
@@ -154,7 +157,7 @@ body {
   content: "";
   position: fixed;
   top: 0;
-  left: 0;
+  left: 15px;
   width: calc(100vw - 615px);
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.6);
@@ -178,7 +181,7 @@ body {
 .cart-container .title {
   text-align: center;
   color: white;
-  font-size: 30px;
+  font-size: 20px;
 }
 .blocks-container {
   display: flex;
