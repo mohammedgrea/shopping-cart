@@ -49,7 +49,7 @@ class UI {
             <div class="title">
              ${item.name}
             </div>
-            <div class="price">$${(item.price * item.amount).toFixed(3)}</div>
+            <div class="price">$${item.price.toFixed(2)}</div>
             <button class="remove" id=${item.id}>remove</button>
           </div>
           <div class="quality">
