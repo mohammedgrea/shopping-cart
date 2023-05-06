@@ -293,7 +293,7 @@ body {
   background-color: red;
   width: fit-content;
   color: white;
-  font-weight: lighter;
+  font-weight: bold;
   transition: 0.3s ease-in-out;
   padding: 5px;
   font-size: 15px;
